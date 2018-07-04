@@ -12,3 +12,10 @@
     <li><%= r.cook_time %> minutos</li>
   </ul>
 <% end %>
+
+<h1> 'Lista de Cozinhas' </h1>
+<% @cuisines.each do |c| %>
+  <ul>
+    <li><%= link_to(c.name, c) %></li>
+  </ul>
+<% end %>
