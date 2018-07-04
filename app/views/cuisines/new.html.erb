@@ -1,0 +1,7 @@
+<h1><%= @msg %></h1>
+
+<%= form_for @cuisine do |c| %>
+  <%= c.label :name, 'Nome' %>
+  <%= c.text_field :name %>
+  <%= c.submit 'Enviar' %>
+<% end %>
