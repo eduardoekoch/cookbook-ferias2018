@@ -10,8 +10,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    redirect_to recipe_path(@recipe)
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      @msg = 'Você deve informar todos os dados da receita'
+      render 'new'   
+    end
   end
   
   private
