@@ -1,5 +1,6 @@
-<h1><%= @msg %></h1>
-
+<%= @cuisine.errors.full_messages.each do |m| %>
+<h1><%= m %></h1>
+<% end %>
 <%= form_for @cuisine do |c| %>
   <%= c.label :name, 'Nome' %>
   <%= c.text_field :name %>

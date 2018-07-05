@@ -12,7 +12,6 @@ class CuisinesController < ApplicationController
     if @cuisine.save
       redirect_to cuisine_path(@cuisine)
     else
-      @msg = "Você deve informar o nome da cozinha"
       render "new"
     end
   end
