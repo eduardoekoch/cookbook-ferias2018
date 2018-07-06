@@ -17,6 +17,21 @@ class RecipesController < ApplicationController
       render 'new'   
     end
   end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update recipe_params
+      flash[:notice] = 'Alteração realizada com Sucesso'
+      redirect_to @recipe
+    else 
+      flash[:alert] = 'Campos obrigatórios não preenchidos'
+      render 'edit'
+    end
+  end
   
   private
 
