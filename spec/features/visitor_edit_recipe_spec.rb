@@ -8,7 +8,8 @@ feature 'Visitor edit recipes' do
                           cuisine: cuisine, difficulty: 'Médio',
                           cook_time: 60,
                           ingredients: 'Farinha, açucar, cenoura',
-                          cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                          cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                          photo: File.new(Rails.root.join('spec', 'support', 'ceviche.jpg')))
    
     # simula a ação do usuário
 
@@ -23,6 +24,8 @@ feature 'Visitor edit recipes' do
     fill_in 'Tempo de Preparo', with: '45'
     fill_in 'Ingredientes', with: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha'
     fill_in 'Como Preparar', with: 'Misturar tudo e servir. Adicione limão a gosto.'
+    attach_file('Foto', Rails.root.join('spec', 'support', 'tabule.jpg'))
+
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Tabule')
@@ -36,6 +39,8 @@ feature 'Visitor edit recipes' do
     expect(page).to have_css('h3', text: 'Como Preparar')
     expect(page).to have_css('p', text:  'Misturar tudo e servir. Adicione limão a gosto.')
     expect(page).to have_css('h3', text: 'Alteração realizada com Sucesso')
+    expect(page).to have_css("img[src*='tabule.jpg']")
+
   end
 
   scenario 'and visitor fill fields with blank values' do
