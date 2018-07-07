@@ -1,5 +1,7 @@
 <h1>Nova receita </h1>
-<h1><%= @msg %></h1>
+<%= @recipe.errors.full_messages.each do |m| %>
+<h1><%= m %></h1>
+<% end %>
 <%= form_for @recipe do |f| %>
   <%= f.label :title, 'Título' %>
   <%= f.text_field :title %>
