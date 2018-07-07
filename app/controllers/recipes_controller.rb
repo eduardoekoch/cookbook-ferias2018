@@ -34,7 +34,13 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @recipes = Recipe.where({title: params[:q]})
+    if params[:q].to_s.blank?
+      @recipes = Recipe.all
+      flash[:alert] = 'Por favor, digite algum filtro de pesquisa.'
+    else
+      flash[:alert] = "Resultado da busca por: #{params[:q]}"
+      @recipes = Recipe.where({title: params[:q]})
+    end
   end
   
   private
